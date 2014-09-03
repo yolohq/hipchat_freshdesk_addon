@@ -1,0 +1,41 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    actionmailer (2.3.18)
+      actionpack (= 2.3.18)
+    actionpack (2.3.18)
+      activesupport (= 2.3.18)
+      rack (~> 1.1.0)
+    activerecord (2.3.18)
+      activesupport (= 2.3.18)
+    activeresource (2.3.18)
+      activesupport (= 2.3.18)
+    activesupport (2.3.18)
+    encryptor (1.1.3)
+    json (1.8.1)
+    mime-types (1.25.1)
+    rack (1.1.6)
+    rails (2.3.18)
+      actionmailer (= 2.3.18)
+      actionpack (= 2.3.18)
+      activerecord (= 2.3.18)
+      activeresource (= 2.3.18)
+      activesupport (= 2.3.18)
+      rake (>= 0.8.3)
+    rake (10.1.0)
+    rdoc (4.1.1)
+      json (~> 1.4)
+    rest-client (1.6.8)
+      mime-types (~> 1.16)
+      rdoc (>= 2.4.2)
+    yaml_record (0.0.6)
+      activesupport (~> 2.3.11)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  encryptor
+  rails (~> 2.3.18)
+  rest-client
+  yaml_record

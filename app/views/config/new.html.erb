@@ -1,0 +1,125 @@
+<% javascript_tag do %>
+
+jQuery(document).ready(function(){
+	
+	function validate_url(url)
+	{
+		var pattern = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+		console.log(pattern.test(url));
+		return pattern.test(url);
+	}	
+
+	jQuery("#config_submit").on("click",function(evt) {
+		if (!validate_url(jQuery("#freshdesk_domain").val()))
+		{
+			alert("Freshdesk Domain url is invalid");
+			evt.preventDefault();
+		}
+	});
+
+
+	jQuery("#freshdesk_apikey").blur(function(){
+		if ( jQuery("#freshdesk_domain") != "" && jQuery("#freshdesk_apikey") != "")
+		{
+			freshdesk_call();
+		}
+	});
+
+	function freshdesk_call() {
+		var fd_apikey = jQuery("#freshdesk_apikey").val();
+		var fd_domain = jQuery("#freshdesk_domain").val();
+		var data = { "domain": fd_domain, "api_key": fd_apikey };
+		var url = window.location.protocol + "//" + window.location.hostname + "/config/verify_freshdesk_apikey"
+		jQuery.ajax({
+	    type: "GET",
+	    url: url,
+	    data: data,
+	    dataType: 'json',
+	    success: function (data){
+	    	if (data.authentication == false)
+	    	{
+	    		alert("Freshdesk domain or apikey is wrong");
+	    	}	
+	    },
+	    error: function(data, errorThrown){
+	    			 console.log(errorThrown)
+             alert("Freshdesk domain or apikey is wrong");
+      }
+		});
+	}
+
+});
+<% end %> 
+
+<% form_for :config,:url => { :controller => "config", :action => "create" },:html => { :class => "form-horizontal" } do |f| -%>
+	<div class ="sign-in-form">
+
+    <div class ="logo">
+     <%= image_tag "freshdesk.png" , :size => "125x125" %>
+     <%= image_tag "divide.png" , :size => "25x25" %>
+     <%= image_tag "hipchat.png" , :size => "115x120" %>
+   </div>
+
+
+   	<div class = "entry hipchat-login-form">
+			<div class = "control-group ">
+		 		<label class = "control-label"> Freshdesk URL</label>
+				<div class="controls ">
+					<%=f.text_field :freshdesk_domain,:id => "freshdesk_domain", :class => "form-control", :placeholder => "https://test.freshdesk.com" %>
+				</div>
+			</div>
+
+			<div class="control-group ">
+		 		<label class = "control-label">Freshdesk Apikey</label>
+				<div class="controls">
+					<%=f.text_field :freshdesk_apikey,:id=>"freshdesk_apikey", :placeholder => "OQs66VUfNfdGXiJHosi" %>
+				</div>
+				<p class ="controls link">API key is available in Agent profile settings page</p>
+			</div>
+		</div>
+     
+    <div>
+      <%= f.hidden_field :hipchat_domain, :value => get_hipchat_domain(params["redirect_url"]) %>
+      <%= f.hidden_field :room_id, :value => get_room_id(params["redirect_url"]) %>
+      <%= f.hidden_field :oauth_id, :value => get_oauth_id(params["redirect_url"]) %>
+      <%= f.hidden_field :redirect_url, :value => get_redirect_url(params["redirect_url"]) %>
+    </div>
+
+    <div class = "action">
+			<div class = "control-group">
+				<div class ="control-label notify">
+					<span>Notify on Hipchat when...</span>
+				</div>
+				
+
+				<div class = " controls event ">
+					<div class ="ticket-create">
+						<span  class="tkt-prop pull-left">Ticket is created</span>
+						<div class="onoffswitch pull-left">
+							<%= f.check_box :ticket_create, :id=> "chk_ticket_create", :class => "onoffswitch-checkbox", :checked => true %>
+    					<label class="onoffswitch-label" for="chk_ticket_create" >
+        			<span class="onoffswitch-inner"></span>
+        			<span class="onoffswitch-switch"></span>
+    					</label>
+						</div>
+					</div>
+					
+					<div class = "ticket-update">
+						<span class="tkt-prop2 pull-left">Ticket is updated</span>
+						<div class="onoffswitch pull-left">
+    					<%= f.check_box :ticket_update, :id=> "chk_ticket_update", :class => "onoffswitch-checkbox", :checked => true %>
+    					<label class="onoffswitch-label" for="chk_ticket_update" >
+        			<span class="onoffswitch-inner"></span>
+        			<span class="onoffswitch-switch"></span>
+    					</label>
+						</div>
+					</div>
+
+      </div>
+      <div class ="move-button">
+      	<%= f.submit "Connect", :class => "button-Connect btn btn-inverse "%>
+      </div>
+    </div>
+	</div>
+
+<% end -%>

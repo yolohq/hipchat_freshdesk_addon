@@ -1,0 +1,160 @@
+.sign-in-form{
+  margin-top: 4%;
+
+  width: 63%;
+  border-radius: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  border : 1px solid #eaeaea;
+  -webkit-box-shadow: 0 0 60px -10px #eaeaea;
+    -moz-box-shadow: 0 0 60px -10px #eaeaea;
+    box-shadow: 0 0 60px -10px #eaeaea;
+}
+.logo{
+  margin-left: 9%;
+  padding-top: 3%;
+  padding-bottom: 2%;
+  padding-left: 17%;
+  
+}
+.entry{
+  padding-left: 7%;
+  background-color:#f9f9f9; 
+  padding-top: 6%;
+  padding-bottom: 2px;
+}
+.link{
+  padding-top: 1%;
+  font-size: 75%;
+  
+  color:gray;
+}
+.notify{
+  
+   width:150px;
+   padding-right: 20px;
+  border-right: 2px solid #f1f1f1;
+  height: 50px;
+}
+.action{
+  padding-left: 7%;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  
+}
+.adjust-ticket-create{
+  margin-top: -5%;
+  margin-left: 1%;
+  margin-left: 3%;
+  padding-bottom: 3%;
+  color:gray;
+  width: 188px;
+}
+.adjust-ticket-update{
+  margin-top: 1%;
+  margin-left: 3%;
+  padding-bottom: 1%;
+  color:gray;
+  width: 188px;
+}
+div.width-change {
+  width: 57px !important;
+  padding-left: 2%;
+
+}
+.move-right{
+  margin-left:30%;
+}
+.button-Connect{
+outline:none!important;
+padding: 4px 27px;
+margin-top:5%;
+font-size: 14px;
+line-height: 20px;
+color: white;
+text-align: center;
+font-color: white;
+vertical-align: middle;
+border-radius: 5px;
+background-color: black;
+}
+.submit-align{
+clear:both;
+}
+.event{
+  
+  padding-left: 1%;
+}
+.check-switch{
+  margin-left: 29%;
+}
+
+.hipchat-login-form input{
+  padding-right:40px;
+}
+.switch{
+box-shadow: none!important;
+}
+.first-toggle{
+  padding-left: 2%;
+}
+.tkt-prop
+{
+  padding: 0px 8px 0px 5px;
+}
+.tkt-prop2 {
+  padding: 0px 5px 0px 5px;
+}
+.ticket-create{
+  display: inline-block;
+}
+.move-button{
+  clear:both;
+  margin-left: 180px;
+}
+.onoffswitch {
+    position: relative; width: 64px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none!important;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 18px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 19px; padding: 0; line-height: 19px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: #53E310; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 17px;height:17px; margin: 1px;
+    background: #FFFFFF;
+    border: 2px solid #999999; border-radius: 18px;
+    position: absolute; top: 0; bottom: 0; right: 41px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
