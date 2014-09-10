@@ -12,9 +12,11 @@ class HipchatController < ApplicationController
 		activity = get_ticket_activities(params["freshdesk_webhook"]["ticket_display_id"],@data.attributes[:freshdesk_domain],@data.attributes[:freshdesk_apikey])
 		if activity.length == 1
 			message = "#{activity.first['ticket_activity']['performer'].first['name']} submitted a ticket <a href=#{params["freshdesk_webhook"]["ticket_url"]}>#{params["freshdesk_webhook"]["ticket_subject"]}</a> "
+		elsif activity.last["ticket_activity"].has_key? "note_content"
+			message = "#{activity.last['ticket_activity']['performer'].first['name']} added a note for <a href=#{params["freshdesk_webhook"]["ticket_url"]}>#{params["freshdesk_webhook"]["ticket_subject"]}</a> "
 		else
 			activity_msg = activity.last["ticket_activity"]["activity"].join(",")
-			message = "#{activity.last['ticket_activity']['performer'].first['name']} #{activity_msg} for <a href=#{params["freshdesk_webhook"]["ticket_url"]}>Freshdesk_Ticket</a>"
+			message = "#{activity.last['ticket_activity']['performer'].first['name']} #{activity_msg} for <a href=#{params["freshdesk_webhook"]["ticket_url"]}>#{params["freshdesk_webhook"]["ticket_subject"]}</a>"
 		end
 		post_hipchat(token["access_token"],message,@data.attributes[:room_id])
 	end
