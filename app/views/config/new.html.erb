@@ -19,7 +19,7 @@ jQuery(document).ready(function(){
 
 
 	jQuery("#freshdesk_apikey").blur(function(){
-		if ( jQuery("#freshdesk_domain") != "" && jQuery("#freshdesk_apikey") != "")
+		if ( jQuery("#freshdesk_domain").val() != "" && jQuery("#freshdesk_apikey").val() != "")
 		{
 			freshdesk_call();
 		}
